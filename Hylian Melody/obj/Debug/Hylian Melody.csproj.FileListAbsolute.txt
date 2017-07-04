@@ -1,0 +1,20 @@
+c:\users\development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\HylianMelody.Properties.Resources.resources
+c:\users\development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\Hylian Melody.csproj.GenerateResource.Cache
+c:\users\development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Hylian Melody.exe.config
+c:\users\development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Hylian Melody.exe
+c:\users\development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Hylian Melody.pdb
+c:\users\development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\Hylian Melody.exe
+c:\users\development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\Hylian Melody.pdb
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\HylianMelody.MainForm.resources
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\JetBrains.Annotations.dll
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\System.ValueTuple.dll
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\JetBrains.Annotations.xml
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\HylianMelody.TrackEditor.resources
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\HylianMelody.NumericDialog.resources
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Sanford.Multimedia.Midi.dll
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Sanford.Multimedia.Midi.pdb
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Sanford.Multimedia.Midi.xml
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\HylianMelody.SandboxWindow.resources
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\Hylian Melody.csprojResolveAssemblyReference.cache
