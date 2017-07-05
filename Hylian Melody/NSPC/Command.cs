@@ -62,9 +62,13 @@ namespace HylianMelody.NSPC
                 }
             }
             if (Size <= 1) { return; }
-            byte[] result = new byte[Size - 1];
-            for (int i = 0; i < result.Length; i++) { result[i] = Parameters[i] ?? 0; }
-            stream.Read(result, 0, result.Length);
+            for (int i = 0; i < (Size - 1); i++)
+            {
+                Parameters[i] = stream.ActuallyReadByte();
+            }
+            //byte[] result = new byte[Size - 1];
+            //for (int i = 0; i < result.Length; i++) { result[i] = Parameters[i] ?? 0; }
+            //stream.Read(result, 0, result.Length);
         }
 
         public int Size

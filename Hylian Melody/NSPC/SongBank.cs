@@ -10,6 +10,7 @@ namespace HylianMelody.NSPC
         [NotNull, ItemCanBeNull]
         public List<Song> Songs { get; } = new List<Song>();
 
+        private ushort _size = 0;
         private ushort _base = 0xD000;
 
         public SongBank() { }
@@ -17,7 +18,8 @@ namespace HylianMelody.NSPC
         public SongBank([NotNull] Stream stream, int songCount) { LoadBytes(stream, songCount); }
 
         //$1B8000 + 31D6
-        //BF 2C 00 D0 (Base Address $D000)
+        //BF 2C (Bank Size $2CBF)
+        //00 D0 (Base Address $D000)
 
         //BASE $D000
         //$1B8004
@@ -53,13 +55,14 @@ namespace HylianMelody.NSPC
                 }
                 s.SetInternalPointers(ref offset);
             }
+            _size = (ushort) (offset - 4);
         }
 
         public void WriteBytes([NotNull] Stream stream)
         {
             SetInternalPointers();
 
-            stream.Write(new byte[] {0xBF, 0x2C}, 0, 2); // mystery bytes
+            stream.WriteSNESWord(_size); // mystery bytes
             stream.WriteSNESWord(_base); // base address
             foreach (Song s in Songs)
             {
