@@ -62,7 +62,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommandEditor.Designer.cs">
+      <DependentUpon>CommandEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="MIDI\MidiReader.cs" />
+    <Compile Include="NSPC\ContextCommand.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="NSPC\ITrack.cs" />
     <Compile Include="NSPC\NSPCTracker.cs">
       <SubType>Component</SubType>
@@ -105,6 +114,9 @@
     <Compile Include="TrackEditor.Designer.cs">
       <DependentUpon>TrackEditor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CommandEditor.resx">
+      <DependentUpon>CommandEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

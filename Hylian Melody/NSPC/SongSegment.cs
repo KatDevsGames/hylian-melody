@@ -19,6 +19,10 @@ namespace HylianMelody.NSPC
 
         public SongSegment()
         {
+            for (int i = 0; i < TRACKS_PER_SEGMENT; i++)
+            {
+                Tracks[i] = new Track();
+            }
         }
 
         public SongSegment([NotNull] SerializationInfo info, StreamingContext context)

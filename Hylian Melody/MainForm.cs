@@ -10,23 +10,9 @@ namespace HylianMelody
     {
         private SongBank _bank;
 
-        private TrackEditor[] _editors;
-
         public MainForm()
         {
             InitializeComponent();
-
-            _editors = new[]
-            {
-                trackEditor1,
-                trackEditor2,
-                trackEditor3,
-                trackEditor4,
-                trackEditor5,
-                trackEditor6,
-                trackEditor7,
-                trackEditor8
-            };
         }
 
         private void PrepGUI()
@@ -41,15 +27,18 @@ namespace HylianMelody
         private void LoadSong(Song song)
         {
             listSegments.Items.Clear();
+            if (song == null) { return; }
             listSegments.Items.AddRange(song.Segments.ToArray());
+            if (listSegments.Items.Count > 0) { listSegments.SelectedIndex = 0; }
         }
 
         private void LoadSegment(SongSegment segment)
         {
-            for (int i = 0; i < 8; i++)
+            /*for (int i = 0; i < 8; i++)
             {
                 _editors[i].LoadTrack(segment.Tracks[i], i);
-            }
+            }*/
+            nspcTracker.Load(segment);
         }
 
         private void buttonSegmentAdd_Click(object sender, EventArgs e)
@@ -59,7 +48,19 @@ namespace HylianMelody
 
         private void buttonSegmentRemove_Click(object sender, EventArgs e)
         {
+            if (listSegments.SelectedItem == null) { return; }
             listSegments.Items.Remove(listSegments.SelectedItem);
+        }
+
+        private void buttonSongAdd_Click(object sender, EventArgs e)
+        {
+            listSongs.Items.Add(new Song());
+        }
+
+        private void buttonSongRemove_Click(object sender, EventArgs e)
+        {
+            if (listSongs.SelectedItem == null) { return; }
+            listSongs.Items.Remove(listSongs.SelectedItem);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,5 +121,14 @@ namespace HylianMelody
 
         private void listSegments_SelectedIndexChanged(object sender, EventArgs e)
             => LoadSegment((SongSegment)listSegments.SelectedItem);
+
+        private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
+            => nspcTracker.Scroll = vScrollBar.Value / ((float)vScrollBar.Maximum);
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            listSegments.Items.Clear();
+            listSongs.Items.Clear();
+        }
     }
 }

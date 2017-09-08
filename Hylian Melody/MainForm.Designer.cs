@@ -50,23 +50,12 @@ namespace HylianMelody
             this.listSegments = new System.Windows.Forms.ListBox();
             this.buttonSegmentAdd = new System.Windows.Forms.Button();
             this.groupTrackEditor = new System.Windows.Forms.GroupBox();
-            this.tabControlTrackEditor = new System.Windows.Forms.TabControl();
-            this.tabTrackEdit1 = new System.Windows.Forms.TabPage();
-            this.trackEditor1 = new HylianMelody.TrackEditor();
-            this.tabTrackEdit2 = new System.Windows.Forms.TabPage();
-            this.trackEditor2 = new HylianMelody.TrackEditor();
-            this.tabTrackEdit3 = new System.Windows.Forms.TabPage();
-            this.trackEditor3 = new HylianMelody.TrackEditor();
-            this.tabTrackEdit4 = new System.Windows.Forms.TabPage();
-            this.trackEditor4 = new HylianMelody.TrackEditor();
-            this.tabTrackEdit5 = new System.Windows.Forms.TabPage();
-            this.trackEditor5 = new HylianMelody.TrackEditor();
-            this.tabTrackEdit6 = new System.Windows.Forms.TabPage();
-            this.trackEditor6 = new HylianMelody.TrackEditor();
-            this.tabTrackEdit7 = new System.Windows.Forms.TabPage();
-            this.trackEditor7 = new HylianMelody.TrackEditor();
-            this.tabTrackEdit8 = new System.Windows.Forms.TabPage();
-            this.trackEditor8 = new HylianMelody.TrackEditor();
+            this.tableMain = new System.Windows.Forms.TableLayoutPanel();
+            this.vScrollBar = new System.Windows.Forms.VScrollBar();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonSongRemove = new System.Windows.Forms.Button();
+            this.buttonSongAdd = new System.Windows.Forms.Button();
+            this.nspcTracker = new HylianMelody.NSPC.NSPCTracker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -80,15 +69,8 @@ namespace HylianMelody
             this.groupSegments.SuspendLayout();
             this.tableSegmentList.SuspendLayout();
             this.groupTrackEditor.SuspendLayout();
-            this.tabControlTrackEditor.SuspendLayout();
-            this.tabTrackEdit1.SuspendLayout();
-            this.tabTrackEdit2.SuspendLayout();
-            this.tabTrackEdit3.SuspendLayout();
-            this.tabTrackEdit4.SuspendLayout();
-            this.tabTrackEdit5.SuspendLayout();
-            this.tabTrackEdit6.SuspendLayout();
-            this.tabTrackEdit7.SuspendLayout();
-            this.tabTrackEdit8.SuspendLayout();
+            this.tableMain.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -117,32 +99,33 @@ namespace HylianMelody
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -197,7 +180,7 @@ namespace HylianMelody
             // 
             // groupSongs
             // 
-            this.groupSongs.Controls.Add(this.listSongs);
+            this.groupSongs.Controls.Add(this.tableLayoutPanel1);
             this.groupSongs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupSongs.Location = new System.Drawing.Point(0, 0);
             this.groupSongs.Name = "groupSongs";
@@ -208,11 +191,12 @@ namespace HylianMelody
             // 
             // listSongs
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.listSongs, 2);
             this.listSongs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listSongs.FormattingEnabled = true;
-            this.listSongs.Location = new System.Drawing.Point(3, 16);
+            this.listSongs.Location = new System.Drawing.Point(3, 3);
             this.listSongs.Name = "listSongs";
-            this.listSongs.Size = new System.Drawing.Size(188, 174);
+            this.listSongs.Size = new System.Drawing.Size(182, 139);
             this.listSongs.TabIndex = 0;
             this.listSongs.SelectedIndexChanged += new System.EventHandler(this.listSongs_SelectedIndexChanged);
             // 
@@ -284,7 +268,7 @@ namespace HylianMelody
             // 
             // groupTrackEditor
             // 
-            this.groupTrackEditor.Controls.Add(this.tabControlTrackEditor);
+            this.groupTrackEditor.Controls.Add(this.tableMain);
             this.groupTrackEditor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupTrackEditor.Location = new System.Drawing.Point(0, 0);
             this.groupTrackEditor.Name = "groupTrackEditor";
@@ -293,175 +277,83 @@ namespace HylianMelody
             this.groupTrackEditor.TabStop = false;
             this.groupTrackEditor.Text = "Track Editor";
             // 
-            // tabControlTrackEditor
+            // tableMain
             // 
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit1);
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit2);
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit3);
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit4);
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit5);
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit6);
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit7);
-            this.tabControlTrackEditor.Controls.Add(this.tabTrackEdit8);
-            this.tabControlTrackEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlTrackEditor.ItemSize = new System.Drawing.Size(21, 18);
-            this.tabControlTrackEditor.Location = new System.Drawing.Point(3, 16);
-            this.tabControlTrackEditor.Name = "tabControlTrackEditor";
-            this.tabControlTrackEditor.SelectedIndex = 0;
-            this.tabControlTrackEditor.Size = new System.Drawing.Size(506, 366);
-            this.tabControlTrackEditor.TabIndex = 2;
+            this.tableMain.ColumnCount = 2;
+            this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableMain.Controls.Add(this.nspcTracker, 0, 0);
+            this.tableMain.Controls.Add(this.vScrollBar, 1, 0);
+            this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableMain.Location = new System.Drawing.Point(3, 16);
+            this.tableMain.Name = "tableMain";
+            this.tableMain.RowCount = 1;
+            this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableMain.Size = new System.Drawing.Size(506, 366);
+            this.tableMain.TabIndex = 2;
             // 
-            // tabTrackEdit1
+            // vScrollBar
             // 
-            this.tabTrackEdit1.Controls.Add(this.trackEditor1);
-            this.tabTrackEdit1.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit1.Name = "tabTrackEdit1";
-            this.tabTrackEdit1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit1.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit1.TabIndex = 0;
-            this.tabTrackEdit1.Text = "1";
-            this.tabTrackEdit1.UseVisualStyleBackColor = true;
+            this.vScrollBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.vScrollBar.Location = new System.Drawing.Point(489, 0);
+            this.vScrollBar.Name = "vScrollBar";
+            this.vScrollBar.Size = new System.Drawing.Size(17, 366);
+            this.vScrollBar.TabIndex = 1;
+            this.vScrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBar_Scroll);
             // 
-            // trackEditor1
+            // tableLayoutPanel1
             // 
-            this.trackEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor1.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor1.Name = "trackEditor1";
-            this.trackEditor1.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor1.TabIndex = 0;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.99999F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonSongRemove, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.listSongs, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonSongAdd, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(188, 174);
+            this.tableLayoutPanel1.TabIndex = 2;
             // 
-            // tabTrackEdit2
+            // buttonSongRemove
             // 
-            this.tabTrackEdit2.Controls.Add(this.trackEditor2);
-            this.tabTrackEdit2.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit2.Name = "tabTrackEdit2";
-            this.tabTrackEdit2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit2.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit2.TabIndex = 1;
-            this.tabTrackEdit2.Text = "2";
-            this.tabTrackEdit2.UseVisualStyleBackColor = true;
+            this.buttonSongRemove.AutoSize = true;
+            this.buttonSongRemove.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonSongRemove.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSongRemove.Location = new System.Drawing.Point(96, 148);
+            this.buttonSongRemove.Name = "buttonSongRemove";
+            this.buttonSongRemove.Size = new System.Drawing.Size(89, 23);
+            this.buttonSongRemove.TabIndex = 2;
+            this.buttonSongRemove.Text = "Remove";
+            this.buttonSongRemove.UseVisualStyleBackColor = true;
+            this.buttonSongRemove.Click += new System.EventHandler(this.buttonSongRemove_Click);
             // 
-            // trackEditor2
+            // buttonSongAdd
             // 
-            this.trackEditor2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor2.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor2.Name = "trackEditor2";
-            this.trackEditor2.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor2.TabIndex = 1;
+            this.buttonSongAdd.AutoSize = true;
+            this.buttonSongAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonSongAdd.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSongAdd.Location = new System.Drawing.Point(3, 148);
+            this.buttonSongAdd.Name = "buttonSongAdd";
+            this.buttonSongAdd.Size = new System.Drawing.Size(87, 23);
+            this.buttonSongAdd.TabIndex = 1;
+            this.buttonSongAdd.Text = "Add";
+            this.buttonSongAdd.UseVisualStyleBackColor = true;
+            this.buttonSongAdd.Click += new System.EventHandler(this.buttonSongAdd_Click);
             // 
-            // tabTrackEdit3
+            // nspcTracker
             // 
-            this.tabTrackEdit3.Controls.Add(this.trackEditor3);
-            this.tabTrackEdit3.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit3.Name = "tabTrackEdit3";
-            this.tabTrackEdit3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit3.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit3.TabIndex = 0;
-            this.tabTrackEdit3.Text = "3";
-            this.tabTrackEdit3.UseVisualStyleBackColor = true;
-            // 
-            // trackEditor3
-            // 
-            this.trackEditor3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor3.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor3.Name = "trackEditor3";
-            this.trackEditor3.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor3.TabIndex = 1;
-            // 
-            // tabTrackEdit4
-            // 
-            this.tabTrackEdit4.Controls.Add(this.trackEditor4);
-            this.tabTrackEdit4.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit4.Name = "tabTrackEdit4";
-            this.tabTrackEdit4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit4.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit4.TabIndex = 0;
-            this.tabTrackEdit4.Text = "4";
-            this.tabTrackEdit4.UseVisualStyleBackColor = true;
-            // 
-            // trackEditor4
-            // 
-            this.trackEditor4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor4.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor4.Name = "trackEditor4";
-            this.trackEditor4.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor4.TabIndex = 1;
-            // 
-            // tabTrackEdit5
-            // 
-            this.tabTrackEdit5.Controls.Add(this.trackEditor5);
-            this.tabTrackEdit5.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit5.Name = "tabTrackEdit5";
-            this.tabTrackEdit5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit5.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit5.TabIndex = 0;
-            this.tabTrackEdit5.Text = "5";
-            this.tabTrackEdit5.UseVisualStyleBackColor = true;
-            // 
-            // trackEditor5
-            // 
-            this.trackEditor5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor5.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor5.Name = "trackEditor5";
-            this.trackEditor5.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor5.TabIndex = 1;
-            // 
-            // tabTrackEdit6
-            // 
-            this.tabTrackEdit6.Controls.Add(this.trackEditor6);
-            this.tabTrackEdit6.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit6.Name = "tabTrackEdit6";
-            this.tabTrackEdit6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit6.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit6.TabIndex = 0;
-            this.tabTrackEdit6.Text = "6";
-            this.tabTrackEdit6.UseVisualStyleBackColor = true;
-            // 
-            // trackEditor6
-            // 
-            this.trackEditor6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor6.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor6.Name = "trackEditor6";
-            this.trackEditor6.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor6.TabIndex = 1;
-            // 
-            // tabTrackEdit7
-            // 
-            this.tabTrackEdit7.Controls.Add(this.trackEditor7);
-            this.tabTrackEdit7.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit7.Name = "tabTrackEdit7";
-            this.tabTrackEdit7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit7.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit7.TabIndex = 0;
-            this.tabTrackEdit7.Text = "7";
-            this.tabTrackEdit7.UseVisualStyleBackColor = true;
-            // 
-            // trackEditor7
-            // 
-            this.trackEditor7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor7.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor7.Name = "trackEditor7";
-            this.trackEditor7.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor7.TabIndex = 1;
-            // 
-            // tabTrackEdit8
-            // 
-            this.tabTrackEdit8.Controls.Add(this.trackEditor8);
-            this.tabTrackEdit8.Location = new System.Drawing.Point(4, 22);
-            this.tabTrackEdit8.Name = "tabTrackEdit8";
-            this.tabTrackEdit8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTrackEdit8.Size = new System.Drawing.Size(498, 340);
-            this.tabTrackEdit8.TabIndex = 0;
-            this.tabTrackEdit8.Text = "8";
-            this.tabTrackEdit8.UseVisualStyleBackColor = true;
-            // 
-            // trackEditor8
-            // 
-            this.trackEditor8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.trackEditor8.Location = new System.Drawing.Point(3, 3);
-            this.trackEditor8.Name = "trackEditor8";
-            this.trackEditor8.Size = new System.Drawing.Size(492, 334);
-            this.trackEditor8.TabIndex = 1;
+            this.nspcTracker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nspcTracker.Location = new System.Drawing.Point(3, 3);
+            this.nspcTracker.Name = "nspcTracker";
+            this.nspcTracker.Scroll = 0F;
+            this.nspcTracker.Size = new System.Drawing.Size(483, 360);
+            this.nspcTracker.TabIndex = 0;
+            this.nspcTracker.Text = "nspcTracker";
             // 
             // MainForm
             // 
@@ -488,15 +380,9 @@ namespace HylianMelody
             this.tableSegmentList.ResumeLayout(false);
             this.tableSegmentList.PerformLayout();
             this.groupTrackEditor.ResumeLayout(false);
-            this.tabControlTrackEditor.ResumeLayout(false);
-            this.tabTrackEdit1.ResumeLayout(false);
-            this.tabTrackEdit2.ResumeLayout(false);
-            this.tabTrackEdit3.ResumeLayout(false);
-            this.tabTrackEdit4.ResumeLayout(false);
-            this.tabTrackEdit5.ResumeLayout(false);
-            this.tabTrackEdit6.ResumeLayout(false);
-            this.tabTrackEdit7.ResumeLayout(false);
-            this.tabTrackEdit8.ResumeLayout(false);
+            this.tableMain.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,25 +407,14 @@ namespace HylianMelody
         private ListBox listSegments;
         private Button buttonSegmentAdd;
         private GroupBox groupTrackEditor;
-        private TabControl tabControlTrackEditor;
-        private TabPage tabTrackEdit1;
-        private TabPage tabTrackEdit2;
-        private TabPage tabTrackEdit3;
-        private TabPage tabTrackEdit4;
-        private TabPage tabTrackEdit5;
-        private TabPage tabTrackEdit6;
-        private TabPage tabTrackEdit7;
-        private TabPage tabTrackEdit8;
         private SplitContainer splitLeft;
-        private TrackEditor trackEditor1;
-        private TrackEditor trackEditor2;
-        private TrackEditor trackEditor3;
-        private TrackEditor trackEditor4;
-        private TrackEditor trackEditor5;
-        private TrackEditor trackEditor6;
-        private TrackEditor trackEditor7;
-        private TrackEditor trackEditor8;
         private ToolStripSeparator toolStripSeparator1;
+        private TableLayoutPanel tableMain;
+        private NSPC.NSPCTracker nspcTracker;
+        private VScrollBar vScrollBar;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button buttonSongRemove;
+        private Button buttonSongAdd;
     }
 }
 

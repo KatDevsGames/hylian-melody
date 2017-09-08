@@ -13,7 +13,7 @@ namespace HylianMelody
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SandboxWindow());
+            Application.Run(new MainForm());
         }
     }
 }
