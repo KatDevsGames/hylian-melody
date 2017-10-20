@@ -72,14 +72,14 @@ namespace HylianMelody.NSPC
             return ((Size >= other.Size) ? (this, GetInternalOffset(other)) : (other, other.GetInternalOffset(this)));
         }
 
-        public void LoadBytes(Stream stream, long origin, ushort baseAddr)
+        public void LoadBytes(Stream stream, long origin, ushort baseAddr, SongBank bank)
         {
             //long localOrigin = stream.Position;
             Command c;
             do
             {
                 c = new Command();
-                c.LoadBytes(stream, origin, baseAddr);
+                c.LoadBytes(stream, origin, baseAddr, bank);
                 Commands.Add(c);
             } while (c.Value != Command.CommandValue.Return);
         }

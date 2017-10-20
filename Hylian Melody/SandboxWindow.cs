@@ -43,7 +43,7 @@ namespace HylianMelody
             };
             od.ShowDialog();
             if (bank == null) { return; }
-            nspcTracker.Load(bank.Songs[15].Segments[0]);
+            //nspcTracker.Load(bank.Songs[15].Segments[0]);
             vScrollBar.Maximum = nspcTracker.MaxHeight;
         }
 

@@ -68,7 +68,7 @@ namespace HylianMelody.NSPC
             }
         }
 
-        public void LoadBytes([NotNull] Stream stream, long origin, ushort baseAddr)
+        public void LoadBytes([NotNull] Stream stream, long origin, ushort baseAddr, SongBank bank)
         {
             long localOrigin = stream.Position;
             for (int i = 0; i < TRACKS_PER_SEGMENT; i++)
@@ -77,7 +77,7 @@ namespace HylianMelody.NSPC
                 ushort nextAddr = stream.ReadSNESWord();
                 stream.Position = origin + 4 + (nextAddr - baseAddr);
                 Tracks[i] = new Track();
-                Tracks[i].LoadBytes(stream, origin, baseAddr);
+                Tracks[i].LoadBytes(stream, origin, baseAddr, bank);
             }
         }
 

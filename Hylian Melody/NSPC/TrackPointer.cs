@@ -51,7 +51,7 @@ namespace HylianMelody.NSPC
 
         public void WriteBytes(Stream stream) { }
 
-        public void LoadBytes(Stream stream, long origin, ushort baseAddr)
+        public void LoadBytes(Stream stream, long origin, ushort baseAddr, SongBank bank)
             => throw new InvalidOperationException();
     }
 }

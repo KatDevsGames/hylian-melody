@@ -1,0 +1,10 @@
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\bin\Debug\Inspection Tools.exe.config
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\bin\Debug\Inspection Tools.exe
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\bin\Debug\Inspection Tools.pdb
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\obj\Debug\Inspection Tools.csprojResolveAssemblyReference.cache
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\obj\Debug\Inspection_Tools.FormMain.resources
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\obj\Debug\Inspection_Tools.Properties.Resources.resources
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\obj\Debug\Inspection Tools.csproj.GenerateResource.Cache
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\obj\Debug\Inspection Tools.csproj.CoreCompileInputs.cache
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\obj\Debug\Inspection Tools.exe
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Inspection Tools\obj\Debug\Inspection Tools.pdb

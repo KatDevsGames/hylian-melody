@@ -10,6 +10,8 @@ namespace HylianMelody
     {
         private SongBank _bank;
 
+        private Song _song;
+
         public MainForm()
         {
             InitializeComponent();
@@ -27,9 +29,12 @@ namespace HylianMelody
         private void LoadSong(Song song)
         {
             listSegments.Items.Clear();
+            listSubroutines.Items.Clear();
             if (song == null) { return; }
             listSegments.Items.AddRange(song.Segments.ToArray());
+            listSubroutines.Items.AddRange(song.Subroutines.ToArray());
             if (listSegments.Items.Count > 0) { listSegments.SelectedIndex = 0; }
+            _song = song;
         }
 
         private void LoadSegment(SongSegment segment)
@@ -38,29 +43,46 @@ namespace HylianMelody
             {
                 _editors[i].LoadTrack(segment.Tracks[i], i);
             }*/
-            nspcTracker.Load(segment);
-        }
-
-        private void buttonSegmentAdd_Click(object sender, EventArgs e)
-        {
-            listSegments.Items.Add(new SongSegment());
-        }
-
-        private void buttonSegmentRemove_Click(object sender, EventArgs e)
-        {
-            if (listSegments.SelectedItem == null) { return; }
-            listSegments.Items.Remove(listSegments.SelectedItem);
+            nspcTracker.Load(segment, _song);
         }
 
         private void buttonSongAdd_Click(object sender, EventArgs e)
         {
-            listSongs.Items.Add(new Song());
+            _bank.Songs.Add(new Song());
+            PrepGUI();
         }
 
         private void buttonSongRemove_Click(object sender, EventArgs e)
         {
             if (listSongs.SelectedItem == null) { return; }
-            listSongs.Items.Remove(listSongs.SelectedItem);
+            _bank.Songs.Remove((Song) listSongs.SelectedItem);
+            PrepGUI();
+        }
+
+        private void buttonSegmentAdd_Click(object sender, EventArgs e)
+        {
+            _song.Segments.Add(new SongSegment());
+            LoadSong(_song);
+        }
+
+        private void buttonSegmentRemove_Click(object sender, EventArgs e)
+        {
+            if (listSegments.SelectedItem == null) { return; }
+            _song.Segments.Remove((SongSegment)listSegments.SelectedItem);
+            LoadSong(_song);
+        }
+
+        private void buttonSubroutineAdd_Click(object sender, EventArgs e)
+        {
+            _song.Subroutines.Add(new Track());
+            LoadSong(_song);
+        }
+
+        private void buttonSubroutineRemove_Click(object sender, EventArgs e)
+        {
+            if (listSubroutines.SelectedItem == null) { return; }
+            _song.Subroutines.Remove((Track)listSubroutines.SelectedItem);
+            LoadSong(_song);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,6 +143,11 @@ namespace HylianMelody
 
         private void listSegments_SelectedIndexChanged(object sender, EventArgs e)
             => LoadSegment((SongSegment)listSegments.SelectedItem);
+
+        private void listSubroutines_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
 
         private void vScrollBar_Scroll(object sender, ScrollEventArgs e)
             => nspcTracker.Scroll = vScrollBar.Value / ((float)vScrollBar.Maximum);

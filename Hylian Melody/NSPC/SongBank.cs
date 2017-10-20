@@ -36,6 +36,11 @@ namespace HylianMelody.NSPC
         //$1B804A - D046 - Hyrule Castle
         //76 D0 66 D0 86 D0 86 D0 96 D0 86 D0 A6 D0 B6 D0 D6 D0 E6 D0 C6 D0 F6 D0 06 D1 FF 00 4A D0 00 00
 
+        public void SeekStream(Stream stream, ushort offset)
+        {
+            stream.Position = (offset - _base) + 4;
+        }
+
         public byte[] ToBytes()
         {
             MemoryStream stream = new MemoryStream();
@@ -102,7 +107,7 @@ namespace HylianMelody.NSPC
             {
                 if (s == null) { continue; }
                 stream.Position = origin + s.Offset + 4;
-                s.LoadBytes(stream, origin, _base);
+                s.LoadBytes(stream, origin, _base, this);
             }
         }
     }

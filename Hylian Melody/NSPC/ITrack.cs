@@ -12,7 +12,7 @@ namespace HylianMelody.NSPC
         ushort Offset { get; }
         void WriteBytes([NotNull] Stream stream);
         List<Command> Commands { get; }
-        void LoadBytes([NotNull] Stream stream, long origin, ushort baseAddr);
+        void LoadBytes([NotNull] Stream stream, long origin, ushort baseAddr, SongBank bank);
         void SetInternalPointers(ref ushort offset);
     }
 }

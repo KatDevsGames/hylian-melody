@@ -8,14 +8,14 @@ namespace HylianMelody
     {
         public Command Command { get; private set; }
 
-        public static Command Edit(Command command = null)
+        public static Command Edit(Command command = null, Song song = null)
         {
-            CommandEditor editor = new CommandEditor(command);
+            CommandEditor editor = new CommandEditor(command, song);
             editor.ShowDialog();
             return editor.Command;
         }
 
-        public CommandEditor(Command command = null)
+        public CommandEditor(Command command = null, Song song = null)
         {
             InitializeComponent();
 
@@ -36,14 +36,27 @@ namespace HylianMelody
                 comboCommand.SelectedItem = Enum.GetName(typeof(Command.CommandValue), command.Value);
             }
 
-            numericParameter1.Value = (decimal)(command.Parameters[0]??-1);
-            numericParameter2.Value = (decimal)(command.Parameters[1]??-1);
-            numericParameter3.Value = (decimal)(command.Parameters[2]??-1);
+            numericParameter1.Value = (command.Parameters[0] ?? -1);
+            numericParameter2.Value = (command.Parameters[1] ?? -1);
+            numericParameter3.Value = (command.Parameters[2] ?? -1);
+
+            groupSubroutines.MinimumSize = groupParameters.Size;
+            groupParameters.MinimumSize = groupSubroutines.Size;
+
+            if (song != null) {
+                comboSubroutines.Items.AddRange(song.Subroutines.ToArray());
+            }
+
+            comboCommand_SelectedIndexChanged(this, EventArgs.Empty);
         }
 
         private void comboCommand_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            groupSubroutines.Visible = (string.Equals(
+                Enum.GetName(typeof(Command.CommandValue), Command.CommandValue.CallSubroutine),
+                (string) comboCommand.SelectedItem,
+                StringComparison.InvariantCultureIgnoreCase));
+            groupParameters.Visible = (!groupSubroutines.Visible);
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -61,5 +74,8 @@ namespace HylianMelody
             }
             Close();
         }
+
+        private void CommandEditor_Shown(object sender, EventArgs e)
+            => comboCommand_SelectedIndexChanged(sender, e);
     }
 }

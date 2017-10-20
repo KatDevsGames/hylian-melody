@@ -29,22 +29,25 @@
         private void InitializeComponent()
         {
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.groupCommand = new System.Windows.Forms.GroupBox();
             this.comboCommand = new System.Windows.Forms.ComboBox();
             this.groupParameters = new System.Windows.Forms.GroupBox();
             this.tableParameters = new System.Windows.Forms.TableLayoutPanel();
-            this.numericParameter1 = new System.Windows.Forms.NumericUpDown();
-            this.numericParameter2 = new System.Windows.Forms.NumericUpDown();
-            this.numericParameter3 = new System.Windows.Forms.NumericUpDown();
+            this.numericParameter3 = new HylianMelody.HexNumericUpDown();
+            this.numericParameter2 = new HylianMelody.HexNumericUpDown();
+            this.numericParameter1 = new HylianMelody.HexNumericUpDown();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.groupSubroutines = new System.Windows.Forms.GroupBox();
+            this.comboSubroutines = new System.Windows.Forms.ComboBox();
             this.tableMain.SuspendLayout();
             this.groupCommand.SuspendLayout();
             this.groupParameters.SuspendLayout();
             this.tableParameters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericParameter1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericParameter2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericParameter3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericParameter2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericParameter1)).BeginInit();
+            this.groupSubroutines.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableMain
@@ -54,20 +57,34 @@
             this.tableMain.ColumnCount = 2;
             this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableMain.Controls.Add(this.buttonCancel, 0, 2);
+            this.tableMain.Controls.Add(this.buttonCancel, 0, 3);
             this.tableMain.Controls.Add(this.groupCommand, 0, 0);
             this.tableMain.Controls.Add(this.groupParameters, 0, 1);
-            this.tableMain.Controls.Add(this.buttonSave, 1, 2);
+            this.tableMain.Controls.Add(this.buttonSave, 1, 3);
+            this.tableMain.Controls.Add(this.groupSubroutines, 0, 2);
             this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableMain.Location = new System.Drawing.Point(0, 0);
             this.tableMain.Name = "tableMain";
-            this.tableMain.RowCount = 3;
+            this.tableMain.RowCount = 4;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableMain.Size = new System.Drawing.Size(340, 126);
+            this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableMain.Size = new System.Drawing.Size(340, 129);
             this.tableMain.TabIndex = 0;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.AutoSize = true;
+            this.buttonCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonCancel.Location = new System.Drawing.Point(3, 146);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(164, 23);
+            this.buttonCancel.TabIndex = 3;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // groupCommand
             // 
@@ -107,6 +124,7 @@
             this.groupParameters.TabIndex = 1;
             this.groupParameters.TabStop = false;
             this.groupParameters.Text = "Parameters";
+            this.groupParameters.Visible = false;
             // 
             // tableParameters
             // 
@@ -127,25 +145,26 @@
             this.tableParameters.Size = new System.Drawing.Size(328, 26);
             this.tableParameters.TabIndex = 0;
             // 
-            // numericParameter1
+            // numericParameter3
             // 
-            this.numericParameter1.AutoSize = true;
-            this.numericParameter1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericParameter1.Hexadecimal = true;
-            this.numericParameter1.Location = new System.Drawing.Point(3, 3);
-            this.numericParameter1.Maximum = new decimal(new int[] {
+            this.numericParameter3.AutoSize = true;
+            this.numericParameter3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericParameter3.Hexadecimal = true;
+            this.numericParameter3.Location = new System.Drawing.Point(221, 3);
+            this.numericParameter3.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericParameter1.Minimum = new decimal(new int[] {
+            this.numericParameter3.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
-            this.numericParameter1.Name = "numericParameter1";
-            this.numericParameter1.Size = new System.Drawing.Size(103, 20);
-            this.numericParameter1.TabIndex = 0;
+            this.numericParameter3.Name = "numericParameter3";
+            this.numericParameter3.Size = new System.Drawing.Size(104, 20);
+            this.numericParameter3.TabIndex = 2;
+            this.numericParameter3.Value = ((long)(0));
             // 
             // numericParameter2
             // 
@@ -166,33 +185,35 @@
             this.numericParameter2.Name = "numericParameter2";
             this.numericParameter2.Size = new System.Drawing.Size(103, 20);
             this.numericParameter2.TabIndex = 1;
+            this.numericParameter2.Value = ((long)(0));
             // 
-            // numericParameter3
+            // numericParameter1
             // 
-            this.numericParameter3.AutoSize = true;
-            this.numericParameter3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericParameter3.Hexadecimal = true;
-            this.numericParameter3.Location = new System.Drawing.Point(221, 3);
-            this.numericParameter3.Maximum = new decimal(new int[] {
+            this.numericParameter1.AutoSize = true;
+            this.numericParameter1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.numericParameter1.Hexadecimal = true;
+            this.numericParameter1.Location = new System.Drawing.Point(3, 3);
+            this.numericParameter1.Maximum = new decimal(new int[] {
             255,
             0,
             0,
             0});
-            this.numericParameter3.Minimum = new decimal(new int[] {
+            this.numericParameter1.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             -2147483648});
-            this.numericParameter3.Name = "numericParameter3";
-            this.numericParameter3.Size = new System.Drawing.Size(104, 20);
-            this.numericParameter3.TabIndex = 2;
+            this.numericParameter1.Name = "numericParameter1";
+            this.numericParameter1.Size = new System.Drawing.Size(103, 20);
+            this.numericParameter1.TabIndex = 0;
+            this.numericParameter1.Value = ((long)(0));
             // 
             // buttonSave
             // 
             this.buttonSave.AutoSize = true;
             this.buttonSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonSave.Location = new System.Drawing.Point(173, 100);
+            this.buttonSave.Location = new System.Drawing.Point(173, 146);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 2;
@@ -200,28 +221,41 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // buttonCancel
+            // groupSubroutines
             // 
-            this.buttonCancel.AutoSize = true;
-            this.buttonCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCancel.Location = new System.Drawing.Point(3, 100);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(164, 23);
-            this.buttonCancel.TabIndex = 3;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.groupSubroutines.AutoSize = true;
+            this.groupSubroutines.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableMain.SetColumnSpan(this.groupSubroutines, 2);
+            this.groupSubroutines.Controls.Add(this.comboSubroutines);
+            this.groupSubroutines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupSubroutines.Location = new System.Drawing.Point(3, 100);
+            this.groupSubroutines.Name = "groupSubroutines";
+            this.groupSubroutines.Size = new System.Drawing.Size(334, 40);
+            this.groupSubroutines.TabIndex = 4;
+            this.groupSubroutines.TabStop = false;
+            this.groupSubroutines.Text = "Subroutines";
+            this.groupSubroutines.Visible = false;
+            // 
+            // comboSubroutines
+            // 
+            this.comboSubroutines.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboSubroutines.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSubroutines.FormattingEnabled = true;
+            this.comboSubroutines.Location = new System.Drawing.Point(3, 16);
+            this.comboSubroutines.Name = "comboSubroutines";
+            this.comboSubroutines.Size = new System.Drawing.Size(328, 21);
+            this.comboSubroutines.TabIndex = 0;
             // 
             // CommandEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 126);
+            this.ClientSize = new System.Drawing.Size(340, 129);
             this.Controls.Add(this.tableMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CommandEditor";
             this.Text = "Edit Command";
+            this.Shown += new System.EventHandler(this.CommandEditor_Shown);
             this.tableMain.ResumeLayout(false);
             this.tableMain.PerformLayout();
             this.groupCommand.ResumeLayout(false);
@@ -229,9 +263,10 @@
             this.groupParameters.PerformLayout();
             this.tableParameters.ResumeLayout(false);
             this.tableParameters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericParameter1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericParameter2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericParameter3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericParameter2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericParameter1)).EndInit();
+            this.groupSubroutines.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,10 +279,12 @@
         private System.Windows.Forms.ComboBox comboCommand;
         private System.Windows.Forms.GroupBox groupParameters;
         private System.Windows.Forms.TableLayoutPanel tableParameters;
-        private System.Windows.Forms.NumericUpDown numericParameter3;
-        private System.Windows.Forms.NumericUpDown numericParameter2;
-        private System.Windows.Forms.NumericUpDown numericParameter1;
+        private HexNumericUpDown numericParameter3;
+        private HexNumericUpDown numericParameter2;
+        private HexNumericUpDown numericParameter1;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.GroupBox groupSubroutines;
+        private System.Windows.Forms.ComboBox comboSubroutines;
     }
 }

@@ -18,14 +18,17 @@ namespace HylianMelody.NSPC
 
         private SongSegment _segment;
 
+        private Song _song;
+
         private NSPCTracker _tracker;
 
         public ContextCommand() : base() { }
 
-        public ContextCommand(Point selected, SongSegment segment, NSPCTracker tracker, bool create = false) : this()
+        public ContextCommand(Point selected, SongSegment segment, Song song, NSPCTracker tracker, bool create = false) : this()
         {
             _selected = selected;
             _segment = segment;
+            _song = song;
             _tracker = tracker;
 
             if (create)
@@ -36,7 +39,7 @@ namespace HylianMelody.NSPC
 
                 Items.Add("Edit", null, (sender, e) =>
                 {
-                    _segment.Tracks[_selected.X].Commands[_selected.Y] = CommandEditor.Edit(SelectedCommand);
+                    _segment.Tracks[_selected.X].Commands[_selected.Y] = CommandEditor.Edit(SelectedCommand, _song);
                     _tracker.Invalidate();
                 });
 

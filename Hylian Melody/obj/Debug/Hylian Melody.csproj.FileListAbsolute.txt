@@ -17,6 +17,8 @@ C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melo
 C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Sanford.Multimedia.Midi.pdb
 C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\Sanford.Multimedia.Midi.xml
 C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\HylianMelody.SandboxWindow.resources
-C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\Hylian Melody.csprojResolveAssemblyReference.cache
 C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\HylianMelody.CommandEditor.resources
 C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\Hylian Melody.csproj.CoreCompileInputs.cache
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\NAudio.dll
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\bin\Debug\NAudio.xml
+C:\Users\Development\documents\visual studio 2017\Projects\SNESTools\Hylian Melody\obj\Debug\Hylian Melody.csprojResolveAssemblyReference.cache

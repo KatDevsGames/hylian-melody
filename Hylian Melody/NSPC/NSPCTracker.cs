@@ -46,14 +46,18 @@ namespace HylianMelody.NSPC
 
         private SongSegment _segment;
 
+        private Song _song;
+
         public NSPCTracker()
         {
             InitializeComponent();
+            DoubleBuffered = true;
         }
 
-        public void Load(SongSegment songSegment)
+        public void Load(SongSegment songSegment, Song song)
         {
             _segment = songSegment;
+            _song = song;
             ITrack[] tracks = _segment.Tracks;
             for (int i = 0; i < TRACKS_PER_SEGMENT; i++)
             {
@@ -72,7 +76,7 @@ namespace HylianMelody.NSPC
             }
             if (e.Button == MouseButtons.Right)
             {
-                (new ContextCommand(_selected, _segment, this, SelectedCommand != null)).Show(this, e.Location);
+                (new ContextCommand(_selected, _segment, _song, this, SelectedCommand != null)).Show(this, e.Location);
             }
             Invalidate();
         }
@@ -82,8 +86,11 @@ namespace HylianMelody.NSPC
             base.OnMouseUp(e);
             if (_dragging)
             {
-                _segment.Tracks[_hover.X].Commands.Insert(_hover.Y, _segment.Tracks[_selected.X].Commands[_selected.Y]);
-                _segment.Tracks[_selected.X].Commands.RemoveAt(_selected.Y);
+                if (_segment.Tracks[_selected.X].Commands.Count > _selected.Y)
+                {
+                    _segment.Tracks[_hover.X].Commands.Insert(_hover.Y, _segment.Tracks[_selected.X].Commands[_selected.Y]);
+                    _segment.Tracks[_selected.X].Commands.RemoveAt(_selected.Y);
+                }
             }
             _dragging = false;
             _hover = new Point(-1, -1);
@@ -122,7 +129,7 @@ namespace HylianMelody.NSPC
             _selected = new Point((int)(e.X / eigthWidth), (e.Y / ROW_HEIGHT) + ((int)(_max_height * _scroll)));
 
             if (SelectedCommand == null) { return; }
-            _segment.Tracks[_selected.X].Commands[_selected.Y] = CommandEditor.Edit(SelectedCommand);
+            _segment.Tracks[_selected.X].Commands[_selected.Y] = CommandEditor.Edit(SelectedCommand, _song);
 
             Invalidate();
         }
@@ -144,6 +151,7 @@ namespace HylianMelody.NSPC
             //base.OnPaint(pe);
             ITrack[] tracks = _segment.Tracks;
             float eigthWidth = Width / 8f;
+            Font captionFont = new Font(FontFamily.GenericMonospace, 8, FontStyle.Bold);
 
             for (int i = 0; i < TRACKS_PER_SEGMENT; i++)
             {
@@ -162,7 +170,7 @@ namespace HylianMelody.NSPC
                 List<Command> commands = track.Commands;
                 for (int j = (int)(_max_height * _scroll), k = 0; ((k * ROW_HEIGHT) < Height) && (j < commands.Count); j++, k++)
                 {
-                    g.DrawString(commands[j].ToString(), new Font(FontFamily.GenericMonospace, 8, FontStyle.Bold), Brushes.Black, (i * eigthWidth), (k * ROW_HEIGHT));
+                    g.DrawString(commands[j].ToString(), captionFont, Brushes.Black, (i * eigthWidth), (k * ROW_HEIGHT));
                     if ((i == _selected.X) && (j == _selected.Y))
                     {
                         g.DrawRectangle(Pens.Red, (i * eigthWidth), (k * ROW_HEIGHT), eigthWidth, ROW_HEIGHT);

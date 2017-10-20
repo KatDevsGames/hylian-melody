@@ -14,6 +14,9 @@ namespace HylianMelody.NSPC
         [NotNull, ItemNotNull]
         public List<SongSegment> Segments { get; } = new List<SongSegment>();
 
+        [NotNull, ItemNotNull]
+        public List<ITrack> Subroutines { get; } = new List<ITrack>();
+
         public ushort Offset { get; set; }
 
         private int? _size;
@@ -73,7 +76,7 @@ namespace HylianMelody.NSPC
         //$1B804A - D046 - Hyrule Castle
         //76 D0 66 D0 86 D0 86 D0 96 D0 86 D0 A6 D0 B6 D0 D6 D0 E6 D0 C6 D0 F6 D0 06 D1 FF 00 4A D0 00 00
 
-        public void LoadBytes([NotNull] Stream stream, long origin, ushort baseAddr)
+        public void LoadBytes([NotNull] Stream stream, long origin, ushort baseAddr, SongBank bank)
         {
             long localOrigin = stream.Position;
 
@@ -86,7 +89,7 @@ namespace HylianMelody.NSPC
                 {
                     SongSegment s = new SongSegment { Offset = (ushort)(nextAddr - baseAddr) };
                     stream.Position = origin + 4 + s.Offset;
-                    s.LoadBytes(stream, origin, baseAddr);
+                    s.LoadBytes(stream, origin, baseAddr, bank);
                     Segments.Add(s);
 
                     SongBlock b = new SongBlock
@@ -117,7 +120,7 @@ namespace HylianMelody.NSPC
                     nextAddr = stream.ReadSNESWord();
                     SongSegment s = new SongSegment { Offset = (ushort)(nextAddr - baseAddr) };
                     stream.Position = origin + 4 + s.Offset;
-                    s.LoadBytes(stream, origin, baseAddr);
+                    s.LoadBytes(stream, origin, baseAddr, bank);
                     Segments.Add(s);
 
                     SongBlock b = new SongBlock
@@ -137,8 +140,18 @@ namespace HylianMelody.NSPC
             if (Segments.Count < 2) { return; }
 
             for (int i = 0; i < (Segments.Count - 1); i++)
-            for (int j = i + 1; j < Segments.Count; j++) {
-                Segments[i].ProcessOverlap(Segments[j]);
+            {
+                for (int j = i + 1; j < Segments.Count; j++) {
+                    Segments[i].ProcessOverlap(Segments[j]);
+                }
+
+                foreach (Track t in Segments[i].Tracks)
+                foreach (Command c in t.Commands)
+                {
+                    if (c.Value == Command.CommandValue.CallSubroutine) {
+                        Subroutines.Add(c.Subroutine);
+                    }
+                }
             }
         }
 
